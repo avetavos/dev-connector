@@ -1,4 +1,5 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQzNjhlMTE1MjM3MjgzZTE0OTMyZjVhIn0sImlhdCI6MTU2Mzk0MzM5MCwiZXhwIjoxNTYzOTU0MTkwfQ.YvzEMlY05m6bHU6IjgvH2Md9TYcedcB5QUUYH24e0tw
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQzNjhlMTE1MjM3MjgzZTE0OTMyZjVhIn0sImlhdCI6MTU2Mzk3NDQwOCwiZXhwIjoxNTYzOTg1MjA4fQ.zocaJRFzA9sEjvmNV_2DrBwpa55RNE0mg3t2_D6_TCU
+@user_id = 5d368e115237283e14932f5a
 
 ### Get current user
 GET http://localhost:5000/api/auth HTTP/1.1
@@ -19,8 +20,8 @@ POST http://localhost:5000/api/user/register HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Aveta Vos",
-    "email": "avetavos@gmail.com",
+    "name": "Alanna Mitchell",
+    "email": "Alanna_Mitchell@gmail.com",
     "password": "123456"
 }
 
@@ -34,12 +35,57 @@ content-type: application/json
 x-auth-token: {{token}}
 
 {
-    "company": "Degv Soft",
-    "website": "avetavos.xyz",
+    "company": "Hegmann, Smith and Heaney",
+    "website": "xavier.info",
     "status": "Developer",
-    "skills": "HTML, CSS, JavaScript",
-    "location": "Udonthani TH",
+    "skills": "Java, C#",
+    "location": "Araceliborough",
     "bio": "I am a developer",
-    "githubusername": "avetavos",
-    "facebook": "https://www.facebook.com/avetavos"
+    "githubusername": "alannamitchell",
+    "facebook": "https://www.facebook.com/alannamitchell"
 }
+
+### Get all profiles
+GET http://localhost:5000/api/profile HTTP/1.1
+
+### Get profile by user id
+GET http://localhost:5000/api/profile/user/{{user_id}} HTTP/1.1
+
+### Delete user, profile and post
+DELETE http://localhost:5000/api/profile HTTP/1.1
+x-auth-token: {{token}}
+
+### Add experience to profile
+PUT http://localhost:5000/api/profile/experience HTTP/1.1
+content-type: application/json
+x-auth-token: {{token}}
+
+{
+    "title": "Developer",
+    "company": "Degv Soft",
+    "location": "Udonthani TH",
+    "from": "08-10-2010",
+    "current": true,
+    "description": "Web development"
+}
+### Delete experience by id
+DELETE http://localhost:5000/api/profile/experience/5d3834157cbb635764918fe8 HTTP/1.1
+x-auth-token: {{token}}
+
+### Add education to profile
+PUT http://localhost:5000/api/profile/education HTTP/1.1
+content-type: application/json
+x-auth-token: {{token}}
+
+{
+    "school": "Khon Kean University",
+    "degree": "bachelor",
+    "fieldofstudy": "Computer Science",
+    "from": "08-02-2003",
+    "to": "08-02-2005",
+    "description": "Web development"
+}
+### Delete education by id
+DELETE http://localhost:5000/api/profile/education/5d385b81c73046343c37cc5e HTTP/1.1
+x-auth-token: {{token}}
+
