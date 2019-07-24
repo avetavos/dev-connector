@@ -1,0 +1,45 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQzNjhlMTE1MjM3MjgzZTE0OTMyZjVhIn0sImlhdCI6MTU2Mzk0MzM5MCwiZXhwIjoxNTYzOTU0MTkwfQ.YvzEMlY05m6bHU6IjgvH2Md9TYcedcB5QUUYH24e0tw
+
+### Get current user
+GET http://localhost:5000/api/auth HTTP/1.1
+content-type: application/json
+x-auth-token: {{token}}
+
+### Login
+POST http://localhost:5000/api/auth/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "avetavos@gmail.com",
+    "password": "123456"
+}
+
+### Register
+POST http://localhost:5000/api/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Aveta Vos",
+    "email": "avetavos@gmail.com",
+    "password": "123456"
+}
+
+### Get current user profile
+GET http://localhost:5000/api/profile/me HTTP/1.1
+x-auth-token: {{token}}
+
+### Create and update profile
+POST http://localhost:5000/api/profile HTTP/1.1
+content-type: application/json
+x-auth-token: {{token}}
+
+{
+    "company": "Degv Soft",
+    "website": "avetavos.xyz",
+    "status": "Developer",
+    "skills": "HTML, CSS, JavaScript",
+    "location": "Udonthani TH",
+    "bio": "I am a developer",
+    "githubusername": "avetavos",
+    "facebook": "https://www.facebook.com/avetavos"
+}

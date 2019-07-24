@@ -1,0 +1,44 @@
+{
+  "name": "dev-connector",
+  "version": "1.0.0",
+  "description": "Social network for developer",
+  "main": "server.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avetavos/dev-connector.git"
+  },
+  "author": "Phongraphi Ruamtham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avetavos/dev-connector/issues"
+  },
+  "homepage": "https://github.com/avetavos/dev-connector#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.1.1",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.6.5"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.1",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-node": "^4.0.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.2",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2"
+  }
+}
