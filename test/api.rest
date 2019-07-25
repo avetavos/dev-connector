@@ -68,6 +68,7 @@ x-auth-token: {{token}}
     "current": true,
     "description": "Web development"
 }
+
 ### Delete experience by id
 DELETE http://localhost:5000/api/profile/experience/5d3834157cbb635764918fe8 HTTP/1.1
 x-auth-token: {{token}}
@@ -85,7 +86,10 @@ x-auth-token: {{token}}
     "to": "08-02-2005",
     "description": "Web development"
 }
+
 ### Delete education by id
 DELETE http://localhost:5000/api/profile/education/5d385b81c73046343c37cc5e HTTP/1.1
 x-auth-token: {{token}}
 
+### Github
+GET http://localhost:5000/api/profile/github/avetavo
