@@ -15,7 +15,7 @@ router.get('/', auth, async (req, res) => {
   await User.findById(req.user.id)
     .select('-password')
     .then(user => {
-      res.send(user);
+      res.json(user);
     });
 });
 

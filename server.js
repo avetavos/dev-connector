@@ -11,6 +11,7 @@ app.use(express.json({ extended: false }));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/user', require('./routes/user'));
 app.use('/api/profile', require('./routes/profile'));
+app.use('/api/posts', require('./routes/post'));
 
 app.listen(process.env.PORT, () => {
   console.log(`Application listened on port: ${process.env.PORT}`);

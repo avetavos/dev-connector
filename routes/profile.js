@@ -25,7 +25,7 @@ router.get('/me', auth, async (req, res) => {
     res.json(profile);
   } catch (err) {
     console.log(err.message);
-    res.status('500').send('Server error');
+    res.status(500).send('Server error');
   }
 });
 
@@ -87,7 +87,7 @@ router.post('/', [auth, profileValidator], async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const profiles = await Profile.find().populate('user', ['name', 'avatar']);
-    res.send(profiles);
+    res.json(profiles);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
@@ -105,7 +105,7 @@ router.get('/user/:user_id', async (req, res) => {
     if (!profile) {
       return res.status(400).json({ msg: 'There is no profile for this user' });
     }
-    res.send(profile);
+    res.json(profile);
   } catch (err) {
     console.error(err.message);
     if (err.kind === 'ObjectId') {
@@ -123,7 +123,7 @@ router.delete('/', auth, async (req, res) => {
     await Profile.findOneAndRemove({ user: req.user.id });
     await User.findByIdAndDelete(req.user.id);
     // await Profile.findByIdAndRemove({ user: req.user.id });
-    res.send({ msg: 'User deleted' });
+    res.json({ msg: 'User deleted' });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
@@ -144,7 +144,7 @@ router.put('/experience', [auth, experienceValidator], async (req, res) => {
     const profile = await Profile.findOne({ user: req.user.id });
     profile.experience.unshift(newExp);
     await profile.save();
-    res.send(profile);
+    res.json(profile);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
@@ -162,7 +162,7 @@ router.delete('/experience/:edu_id', auth, async (req, res) => {
       .indexOf(req.params.edu_id);
     profile.experience.splice(removeIndex, 1);
     await profile.save();
-    res.send(profile);
+    res.json(profile);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
@@ -199,7 +199,7 @@ router.put('/education', [auth, educationValidator], async (req, res) => {
     const profile = await Profile.findOne({ user: req.user.id });
     profile.education.unshift(newEdu);
     await profile.save();
-    res.send(profile);
+    res.json(profile);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
@@ -217,7 +217,7 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
       .indexOf(req.params.edu_id);
     profile.education.splice(removeIndex, 1);
     await profile.save();
-    res.send(profile);
+    res.json(profile);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
@@ -234,7 +234,7 @@ router.get('/github/:username', (req, res) => {
         `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_SECRET}`
       )
       .then(result => {
-        res.send(result.data);
+        res.json(result.data);
       })
       .catch(err => {
         if (err.response.status === 404) {
