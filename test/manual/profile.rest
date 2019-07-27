@@ -1,29 +1,5 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQzOTczMmE5MTVkOTgzYzg4NGVlMmZiIn0sImlhdCI6MTU2NDA3NDE3OSwiZXhwIjoxNTY0MDg0OTc5fQ.WKjLdBs8yYXYOyy7yXMhvVBR0GlarRldICkqKdqgNJw
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQzOTczMmE5MTVkOTgzYzg4NGVlMmZiIn0sImlhdCI6MTU2NDE0MjgyMCwiZXhwIjoxNTY0MTUzNjIwfQ.UFfcwp2sHUMTeV3eIP2g5i6pYujgCv6HbD7Qg67ZCRw
 @user_id = 5d368e115237283e14932f5a
-
-### Get current user
-GET http://localhost:5000/api/auth HTTP/1.1
-content-type: application/json
-x-auth-token: {{token}}
-
-### Login
-POST http://localhost:5000/api/auth/login HTTP/1.1
-content-type: application/json
-
-{
-    "email": "Alanna_Mitchell@gmail.com",
-    "password": "123456"
-}
-
-### Register
-POST http://localhost:5000/api/user/register HTTP/1.1
-content-type: application/json
-
-{
-    "name": "Alanna Mitchell",
-    "email": "Alanna_Mitchell@gmail.com",
-    "password": "123456"
-}
 
 ### Get current user profile
 GET http://localhost:5000/api/profile/me HTTP/1.1
@@ -93,32 +69,3 @@ x-auth-token: {{token}}
 
 ### Github
 GET http://localhost:5000/api/profile/github/avetavos
-
-### Create new post
-POST http://localhost:5000/api/posts
-content-type: application/json
-x-auth-token: {{token}}
-
-{
-    "text": "Sed tenetur quia distinctio cum sint animi est qui non. Quos fugit aut modi impedit maiores veritatis quaerat. Ullam magnam autem et voluptates qui. Sit maiores veniam voluptas nihil."
-}
-
-### Get all posts
-GET http://localhost:5000/api/posts
-x-auth-token: {{token}}
-
-### Get post by id
-GET http://localhost:5000/api/posts/5d39734d915d983c884ee2fc
-x-auth-token: {{token}}
-
-### Delete post by id
-DELETE  http://localhost:5000/api/posts/5d39afeee42b390454a468
-x-auth-token: {{token}}
-
-### Like post
-PUT  http://localhost:5000/api/posts/like/5d39734d915d983c884ee2fc
-x-auth-token: {{token}}
-
-### Unlike post
-PUT  http://localhost:5000/api/posts/unlike/5d39734d915d983c884ee2fc
-x-auth-token: {{token}}
