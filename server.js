@@ -1,18 +1,15 @@
-require('dotenv').config();
-const express = require('express');
-const databaseConnection = require('./database/connection');
-
-const app = express();
-
-databaseConnection();
-
-app.use(express.json({ extended: false }));
-
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/user', require('./routes/user'));
-app.use('/api/profile', require('./routes/profile'));
-app.use('/api/posts', require('./routes/post'));
-
-app.listen(process.env.PORT, () => {
-  console.log(`Application listened on port: ${process.env.PORT}`);
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
+const dotenv = tslib_1.__importStar(require("dotenv"));
+const App_1 = tslib_1.__importDefault(require("./App"));
+const Authenticate_1 = tslib_1.__importDefault(require("./app/controllers/Authenticate"));
+const Profile_1 = tslib_1.__importDefault(require("./app/controllers/Profile"));
+const Post_1 = tslib_1.__importDefault(require("./app/controllers/Post"));
+dotenv.config();
+const app = new App_1.default([
+    new Authenticate_1.default(),
+    new Profile_1.default(),
+    new Post_1.default()
+]);
+app.listen();
