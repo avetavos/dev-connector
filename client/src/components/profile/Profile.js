@@ -70,7 +70,6 @@ const Profile = ({
                 <h4>No education credentials</h4>
               )}
             </div>
-
             {profile.github && <ProfileGithub username={profile.github} />}
           </div>
         </Fragment>

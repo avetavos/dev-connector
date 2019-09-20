@@ -5,9 +5,9 @@ import {
   UPDATE_PROFILE,
   GET_PROFILES,
   GET_REPOS
-} from '../actions/types.js';
+} from '../actions/types';
 
-const initializeState = {
+const initialState = {
   profile: null,
   profiles: [],
   repos: [],
@@ -15,8 +15,9 @@ const initializeState = {
   error: {}
 };
 
-export default function(state = initializeState, action) {
+export default function(state = initialState, action) {
   const { type, payload } = action;
+
   switch (type) {
     case GET_PROFILE:
     case UPDATE_PROFILE:

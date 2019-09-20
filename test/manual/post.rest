@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQzOTczMmE5MTVkOTgzYzg4NGVlMmZiIn0sImlhdCI6MTU2NDE0MjgyMCwiZXhwIjoxNTY0MTUzNjIwfQ.UFfcwp2sHUMTeV3eIP2g5i6pYujgCv6HbD7Qg67ZCRw
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNWQ4NDk5MmE2NGZhNWYzYTE0YTRjNGU0IiwiaWF0IjoxNTY4OTg4NjU5LCJleHAiOjE1Njg5OTk0NTl9.Hom-_hjRNEPLLrsfHzJFUXuCHUHH5vkPOrzUKKwxTkA
 @user_id = 5d368e115237283e14932f5a
 
 ### Create new post
@@ -23,11 +23,11 @@ DELETE http://localhost:5000/api/posts/5d39afeee42b390454a468
 x-auth-token: {{token}}
 
 ### Like post
-PUT http://localhost:5000/api/posts/like/5d39734d915d983c884ee2fc
+PUT http://localhost:5000/api/posts/like/5d84da28ceb6a817149b259e
 x-auth-token: {{token}}
 
 ### Unlike post
-PUT http://localhost:5000/api/posts/unlike/5d39734d915d983c884ee2fc
+PUT http://localhost:5000/api/posts/unlike/5d84da28ceb6a817149b259e
 x-auth-token: {{token}}
 
 ### Add comment to post

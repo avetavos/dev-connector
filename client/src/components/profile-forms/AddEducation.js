@@ -118,7 +118,9 @@ const AddEducation = ({ addEducation, history }) => {
             onChange={e => onChange(e)}
           />
         </div>
-        <input type='submit' className='btn btn-primary my-1' />
+        <button type='submit' className='btn btn-dark my-1'>
+          Submit
+        </button>
         <Link className='btn btn-light my-1' to='/dashboard'>
           Go Back
         </Link>
