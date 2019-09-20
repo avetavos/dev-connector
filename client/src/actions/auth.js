@@ -16,7 +16,6 @@ export const loadUser = () => async dispatch => {
   }
   try {
     const res = await axios.get('/api/auth');
-
     dispatch({
       type: USER_LOADED,
       payload: res.data
@@ -28,7 +27,10 @@ export const loadUser = () => async dispatch => {
   }
 };
 
-export const register = ({ name, email, password }) => async dispatch => {
+export const register = (
+  { name, email, password },
+  history
+) => async dispatch => {
   const config = {
     header: {
       'Content-Type': 'application/json'
@@ -37,10 +39,12 @@ export const register = ({ name, email, password }) => async dispatch => {
   const body = { name, email, password };
   try {
     await axios.post(`/api/auth/register`, body, config);
+    await dispatch(setAlert('Register successfully'), 'success');
+    history.push('/login');
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach(error => dispatch(setAlert(error.msg), 'danger'));
     }
   }
 };
