@@ -39,7 +39,7 @@ export const register = (
   const body = { name, email, password };
   try {
     await axios.post(`/api/auth/register`, body, config);
-    await dispatch(setAlert('Register successfully'), 'success');
+    await dispatch(setAlert('Register successfully', 'success'));
     history.push('/login');
   } catch (err) {
     const errors = err.response.data.errors;

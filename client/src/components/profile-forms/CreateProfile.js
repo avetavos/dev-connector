@@ -1,15 +1,17 @@
 import React, { useState, Fragment } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { createProfile } from '../../actions/profile';
 
-const CreateProfile = props => {
+const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
     company: '',
     website: '',
     location: '',
     status: '',
     skills: '',
-    githubusername: '',
+    github: '',
     bio: '',
     twitter: '',
     facebook: '',
@@ -26,7 +28,7 @@ const CreateProfile = props => {
     location,
     status,
     skills,
-    githubusername,
+    github,
     bio,
     twitter,
     facebook,
@@ -38,6 +40,11 @@ const CreateProfile = props => {
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const onSubmit = e => {
+    e.preventDefault();
+    createProfile(formData, history);
+  };
+
   return (
     <div>
       <h1 className='large text-primary'>Create Your Profile</h1>
@@ -47,7 +54,7 @@ const CreateProfile = props => {
       </p>
       <small>* = required field</small>
       <div className='my-2'>
-        <form className='form'>
+        <form className='form' onSubmit={e => onSubmit(e)}>
           <select name='status' value={status} onChange={e => onChange(e)}>
             <option value='0'>* Select Professional Status</option>
             <option value='Developer'>Developer</option>
@@ -114,9 +121,9 @@ const CreateProfile = props => {
             <input
               type='text'
               placeholder='GitHub Username'
-              name='githubusername'
+              name='github'
               onChange={e => onChange(e)}
-              value={githubusername}
+              value={github}
             />
             <small className='form-text'>
               If you want your latest repos and a GitHub link, include your
@@ -132,13 +139,15 @@ const CreateProfile = props => {
               value={bio}
             />
           </div>
-          <button
-            type='button'
-            className='btn btn-light'
-            onClick={() => toggleSocialInputs(!displaySocialInputs)}
-          >
-            Add Social Network Links
-          </button>
+          <div className='my-2'>
+            <button
+              type='button'
+              className='btn btn-light'
+              onClick={() => toggleSocialInputs(!displaySocialInputs)}
+            >
+              Add Social Network Links
+            </button>
+          </div>
           {displaySocialInputs && (
             <Fragment>
               <div className='form-group social-input'>
@@ -193,12 +202,23 @@ const CreateProfile = props => {
               </div>
             </Fragment>
           )}
+          <button type='submit' className='btn btn-primary my-1'>
+            Submit
+          </button>
+          <Link to='/dashboard' className='btn btn-light my-1'>
+            Go Back
+          </Link>
         </form>
       </div>
     </div>
   );
 };
 
-CreateProfile.propTypes = {};
+CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired
+};
 
-export default CreateProfile;
+export default connect(
+  null,
+  { createProfile }
+)(withRouter(CreateProfile));
